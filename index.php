@@ -19,8 +19,7 @@ get('/index', function () {
 	$page = from($_GET, 'page');
 	//sets the $page var = to the end portion of the URL after 'http://localhost/OrigPHPBlog/?page=' i.e. '2' for page 2
 	
-	var_dump($page);
-	//prints out the variables to screen for debugging
+	//prints out the variables to screen for debugging. At this point it's null as it hasn't been set
 	
 	$page = $page ? (int)$page : 1;
 	//The above is called a conditional operator
@@ -35,8 +34,9 @@ get('/index', function () {
 		//$page = 2;
 	//}
 	
-
-	var_dump($page);
+	//var_dump("Test " . $page);
+	dump("HELLO" . " my name is");
+	//prints out the variable information to
 	
 	$posts = get_posts($page);
 	
