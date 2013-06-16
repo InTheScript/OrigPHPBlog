@@ -11,7 +11,12 @@
 	<link rel="alternate" type="application/rss+xml" title="<?php echo config('blog.title')?>  Feed" href="<?php echo site_url()?>rss" />
 
 	<link href="<?php echo site_url() ?>assets/css/style.css" rel="stylesheet" />
+		
+	<!--  Original web font -->
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=latin,cyrillic-ext" rel="stylesheet" />
+	
+	<!--  New webfont I hacked in -->
+	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200' rel='stylesheet' type='text/css'>
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -28,8 +33,8 @@
 
 		<ul>
 			<li><a href="<?php echo site_url() ?>">Home</a></li>
-			<li><a href="#">Link 2</a></li>
-			<li><a href="#">Link 3</a></li>
+			<li><a href="?page=2">Link 2</a></li>
+			<li><a href="?page=3">Link 3</a></li>
 			<li><a href="#">Link 4</a></li>
 		</ul>
 

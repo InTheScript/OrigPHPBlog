@@ -268,9 +268,9 @@ aside p.author{
 	}
 }
 
-@media all and (max-width: 840px) {
-
+@media all and (max-width: 840px) { 
 	h2{
+		font-family: 'Titillium Web', sans-serif;
 		font-size:36px;
 	}
 

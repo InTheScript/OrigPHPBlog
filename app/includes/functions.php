@@ -23,9 +23,10 @@ function get_post_names(){
 }
 
 function get_posts($page = 1, $perpage = 0){
-
+	
 	if($perpage == 0){
 		$perpage = config('posts.perpage');
+		//checks if the per page var is 0 if it is it uses the sets the $perpage var to the setting in the config.ini file
 	}
 
 	$posts = get_post_names();
@@ -89,6 +90,7 @@ function has_pagination($page = 1){
 		'prev'=> $page > 1,
 		'next'=> $total > $page*config('posts.perpage')
 	);
+	
 }
 
 // The not found error

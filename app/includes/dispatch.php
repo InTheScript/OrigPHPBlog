@@ -281,8 +281,13 @@ function render($view, $locals = null, $layout = null) {
     error(500, "[views.root] is not set");
 
   ob_start();
+  // the output buffer records code input / code from a certain point (like macro recorder)
   include "{$view_root}/{$view}.html.php";
   content(trim(ob_get_clean()));
+  //Start the output buffer. Copy the view template into the buffer and save the result using the content method.
+  //grab the content from the main.html.php template which calls in all of the posts
+  //store agains the $_stash var in the stash method (which is within the content method)...
+  //then flush the output buffer
 
   if ($layout !== false) {
 
@@ -296,10 +301,22 @@ function render($view, $locals = null, $layout = null) {
     header('Content-type: text/html; charset=utf-8');
 
     ob_start();
+    // the output buffer records code input / code from a certain point (like macro recorder)
     require $layout;
-    echo trim(ob_get_clean());
+    //Start the output buffer. Copy the app/views/layout.html.php template into the buffer using 'require'
+    
+    var_dump ($layout);
+    //echo trim(ob_get_clean());
+    $MeMo = trim(ob_get_clean());
+    //remove white space from the code held in the output buffer
+     
+    echo $MeMo;
+    //print the resultant code to screen
+    //Remember that the content() method in the app/views/layout.html.php which gets printed to screen already has the blog posts template stored against it
+    
 
   } else {
+  	var_dump("This is an ELSE situation");
     echo content();
   }
 }
@@ -396,6 +413,7 @@ function route($method, $pattern, $callback = null) {
     // create a route entry for this pattern
     $route_map[$method][$pattern] = array(
       'xp' => route_to_regex($pattern),
+    		//$pattern = '/:year/:month/:name'
       'cb' => $callback
     );
 

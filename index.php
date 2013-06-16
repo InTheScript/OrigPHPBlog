@@ -17,6 +17,7 @@ config('source', 'app/config.ini');
 get('/index', function () {
 
 	$page = from($_GET, 'page');
+	//From is a custom dispatch function
 	//sets the $page var = to the end portion of the URL after 'http://localhost/OrigPHPBlog/?page=' i.e. '2' for page 2
 	
 	//prints out the variables to screen for debugging. At this point it's null as it hasn't been set
@@ -24,7 +25,7 @@ get('/index', function () {
 	$page = $page ? (int)$page : 1;
 	//The above is called a conditional operator
 	//It's the shorthand version of an if-else statement
-	//It means that if $page has an integer value use it, alternativley if is zero (or null) set it to 1 (the first page).
+	//It means that if $page has an integer value use it, alternativley if it is zero (or null) set it to 1 (the first page).
 	//Type casting the page variable to an integer with the (int syntax)
 	
 	//A long hand alternative is below
@@ -35,10 +36,15 @@ get('/index', function () {
 	//}
 	
 	//var_dump("Test " . $page);
-	dump("HELLO" . " my name is");
-	//prints out the variable information to
+	//dump("HELLO" . " my name is");
+	//prints out the variable information to the page
+	
+	//dump(has_pagination($page));
+	//checks if pagination is possible
 	
 	$posts = get_posts($page);
+	//custom function held in functions.php to gather a set of posts for a given page
+	// the page variable is passed to this function from the URL see the from(_GET,'page'); function above
 	
 	if(empty($posts) || $page < 1){
 		// a non-existing page
@@ -54,13 +60,15 @@ get('/index', function () {
 
 // The post page
 get('/:year/:month/:name',function($year, $month, $name){
+//Get takes 2 arguments, 'path' and call back 'cb'
+//$path = '/:year/:month/:name'
 
 	$post = find_post($year, $month, $name);
 
 	if(!$post){
 		not_found();
 	}
-
+	
 	render('post',array(
 		'title' => $post->title .' ⋅ ' . config('blog.title'),
 		'p' => $post
