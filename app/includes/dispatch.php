@@ -305,7 +305,7 @@ function render($view, $locals = null, $layout = null) {
     require $layout;
     //Start the output buffer. Copy the app/views/layout.html.php template into the buffer using 'require'
     
-    var_dump ($layout);
+    //var_dump ($layout);
     //echo trim(ob_get_clean());
     $MeMo = trim(ob_get_clean());
     //remove white space from the code held in the output buffer
