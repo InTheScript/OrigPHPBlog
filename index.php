@@ -18,6 +18,7 @@ get('/index', function () {
 
 	$page = from($_GET, 'page');
 	//From is a custom dispatch function
+	//$_GET is a standard PHP language construct to strip tokens out of the URL
 	//sets the $page var = to the end portion of the URL after 'http://localhost/OrigPHPBlog/?page=' i.e. '2' for page 2
 	
 	//prints out the variables to screen for debugging. At this point it's null as it hasn't been set
