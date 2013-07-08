@@ -16,6 +16,17 @@ config('source', 'app/config.ini');
 // This will match the root url
 get('/index', function () {
 
+/*
+ * Litte experiment using the $_GET super global variable to grab infromation passed in the URL
+ * http://localhost/phpblog?page=1
+ * 
+if (isset($_GET['page']))
+ {	
+	print $_GET['page'];
+};
+
+*/
+
 	$page = from($_GET, 'page');
 	//From is a custom dispatch function
 	//$_GET is a standard PHP language construct to strip tokens out of the URL

@@ -1,0 +1,21 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+	hideDotFiles = dotGitOnly
+[branch "master"]
+[remote "origin"]
+	url = git@github.com:InTheScript/OrigPHPBlog.git
+	fetch = +refs/heads/master:refs/remotes/origin/master
+[gui]
+	wmstate = normal
+	geometry = 887x427+25+29 171 192
+[remote "staging-inthescript"]
+	url = git@heroku.com:staging-inthescript.git
+	fetch = +refs/heads/*:refs/remotes/staging-inthescript/*
+[remote "production-inthescript"]
+	url = git@heroku.com:inthescript.git
+	fetch = +refs/heads/*:refs/remotes/production-inthescript/*
